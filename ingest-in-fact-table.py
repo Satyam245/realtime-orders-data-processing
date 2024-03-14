@@ -9,7 +9,7 @@ publisher = pubsub_v1.PublisherClient()
 
 # Project and Topic details
 project_id = "your-gcp-project-id"  # Replace with your actual GCP project ID
-subscription_name = "subscription-name"
+subscription_name = "subscription-name"  # Put the subscription name of payments_data gcp topic
 subscription_path = subscriber.subscription_path(project_id, subscription_name)
 dlq_topic_path = publisher.topic_path(project_id, "dlq_payments_data")
 
