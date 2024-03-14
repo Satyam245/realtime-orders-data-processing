@@ -9,8 +9,8 @@ This project demonstrates real-time data processing using Google Cloud Platform 
 
 ## Project Structure
 
-- `producer.py`: Python script for producing orders and payments data to Pub/Sub topics.
-- `consumer.py`: Python script for consuming data from Pub/Sub topics and updating Cassandra tables.
+- `producer.py`: Python script for producing orders (orders-data-producer.py) and payments data (payments-data-producer.py) to Pub/Sub topics.
+- `consumer.py`: Python script for consuming data from Pub/Sub topics and updating Cassandra tables. Orders-data-consumer.py fetches the data from order_data topic and ingest-in-fact-table.py fetches from payments_data.
 - `requirements.txt`: List of Python dependencies required for the project.
 
 ## Prerequisites
