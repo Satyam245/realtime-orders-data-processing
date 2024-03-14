@@ -1,0 +1,38 @@
+Here are the steps for setting up the project:
+
+Initial Steps for Pub/Sub:
+
+Make sure Google Cloud SDK is installed to access gcloud CLI commands.
+Create Pub/Sub topics named orders_data, payments_data, dlq_orders_data and dlq_payments_data with default subscribers.
+Authenticate your GCP account from the terminal using the command: gcloud auth application-default login.
+Once authenticated, your default auth config will be created in ~/.config/gcloud/application_default_credentials.json.
+Open IAM & Admin service, create a new service account, and add Pub/Sub producer and Pub/Sub subscriber roles for it.
+Create keys for this newly created service account. Download the JSON file and replace its content under ~/.config/gcloud/application_default_credentials.json.
+Python Package Installation:
+
+Install the required Python packages using:
+
+pip install google-cloud-pubsub
+pip install cassandra-driver
+
+Create Database in datastax cassandra and download credentials (secure-bundle.zip, token.json)
+
+Create keyspace and table using - 
+
+CREATE KEYSPACE IF NOT EXISTS ecom_store WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
+
+CREATE TABLE ecom_store.orders_payments_facts (
+    order_id BIGINT PRIMARY KEY,
+    customer_id BIGINT,
+    item TEXT,
+    quantity BIGINT,
+    price DOUBLE,
+    shipping_address TEXT,
+    order_status TEXT,
+    creation_date TEXT,
+    payment_id BIGINT,
+    payment_method TEXT,
+    card_last_four TEXT,
+    payment_status TEXT,
+    payment_datetime TEXT
+);
